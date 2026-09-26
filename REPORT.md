@@ -1,6 +1,7 @@
 # REPORT — Krishna AI Services one page site
 
 Repo: https://github.com/Balakrishna-99/krishna-ai-services-site (public, branch `main`)
+Live site: https://krishna-ai-services-site.vercel.app (Vercel project `bbg15/krishna-ai-services-site`)
 
 ## Status per part
 
@@ -22,12 +23,16 @@ Repo: https://github.com/Balakrishna-99/krishna-ai-services-site (public, branch
   evidence: `img count: 8`, every `<img>` reported `width=True height=True alt=True`; six pictures carry `onerror` so a missing file hides its band or figure instead of leaving a gap.
 - **GitHub repository:** DONE
   evidence: `gh repo create ... --push` returned `https://github.com/Balakrishna-99/krishna-ai-services-site`; `git ls-remote --heads origin` returned `refs/heads/main`; repo page `200`; raw `index.html` `200`, `styles.css` `200`, `images/speaking.jpg` `200`.
+- **Live deploy (Vercel, direct CLI upload):** DONE
+  evidence: `vercel deploy --prod --yes` -> `✓ Ready in 7s`, alias `https://krishna-ai-services-site.vercel.app`; live `index -> 200 text/html; charset=utf-8 bytes 12578`; `contains 'Krishna AI Services': True`; live price check `0/0/0`; all 9 assets `200`.
 
 ## What broke and how I fixed it
 
 - My first listing of `images/` showed 13 descriptive filenames and none of the names in the brief. A later listing showed 26 files, including the exact brief names `logo.jpg`, `logo-dark.jpg`, `profile.jpg`, `working.jpg`, `speaking.jpg`, `shot1.jpg`-`shot6.jpg`. I built against those exact names.
 - No `CONTACT DETAILS` block exists in the pasted brief. The only one in the project is `faq.txt` lines 234-247, marked `DEMO - REPLACE BEFORE PUBLISHING` and belonging to a different fictional firm. I did not use it; I asked and used the client's own answers instead.
 - Booking, WhatsApp and email were all supplied, so no `BOOKING_LINK_GOES_HERE` placeholder was needed.
+- Vercel CLI is installed but its PowerShell shim is blocked by the machine's execution policy. Fixed by calling `vercel.cmd` directly instead of `vercel`.
+- Vercel's attempt to auto-connect the new project to the GitHub repo failed: `Error: Failed to connect Balakrishna-99/krishna-ai-services-site to project.` The deploy still succeeded because the CLI uploaded the files directly. Auto-deploy on push is therefore not set up yet.
 
 ## Claims ledger
 
@@ -39,8 +44,9 @@ Repo: https://github.com/Balakrishna-99/krishna-ai-services-site (public, branch
 | Every image has width/height/alt | regex over `<img>` -> all `width=True height=True alt=True` |
 | Contact links are real | regex over page -> 4x Cal.com, `wa.me/919962268122`, `mailto:bala.krishna47p@gmail.com` |
 | Repo exists and holds the site | `gh repo create` output URL; `git ls-remote` -> `refs/heads/main`; repo page `200`; raw files `200` |
+| Site is live and serves every asset | live index `200`; curl on 9 assets -> all `200` |
 
-Not claimed: nothing is deployed to a hosting provider; no live public website URL exists yet. `UNVERIFIED:` none.
+Not claimed: nothing else. The live site exists at `https://krishna-ai-services-site.vercel.app`. `UNVERIFIED:` none.
 
 ## What I would tell the next person
 
