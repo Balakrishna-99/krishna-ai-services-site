@@ -11,3 +11,5 @@
 7. Verified every local reference in the HTML -> regex over page, fetch each -> `local refs OK: 9 / 9`.
 8. Verified no price anywhere -> regex over page -> `Rs (case-sensitive): 0`, `35,000 / 35000: 0`, `word price: 0`.
 9. Verified contact links -> regex over page -> 4x `https://cal.com/krishna-ai-services/20-min-ai-business-discovery-call-with-balakrishna`, `https://wa.me/919962268122?text=...`, `mailto:bala.krishna47p@gmail.com?subject=...`.
+10. Created the GitHub repo and pushed -> `gh repo create krishna-ai-services-site --public --source=. --remote=origin --push` -> `https://github.com/Balakrishna-99/krishna-ai-services-site`, `branch 'main' set up to track 'origin/main'`.
+11. Verified the remote -> `git ls-remote --heads origin` -> `refs/heads/main`; `Invoke-WebRequest https://github.com/... 200`; raw `index.html 200`, `styles.css 200`, `images/speaking.jpg 200`.
