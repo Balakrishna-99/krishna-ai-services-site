@@ -25,6 +25,9 @@ Live site: https://krishna-ai-services-site.vercel.app (Vercel project `bbg15/kr
   evidence: `gh repo create ... --push` returned `https://github.com/Balakrishna-99/krishna-ai-services-site`; `git ls-remote --heads origin` returned `refs/heads/main`; repo page `200`; raw `index.html` `200`, `styles.css` `200`, `images/speaking.jpg` `200`.
 - **Live deploy (Vercel, direct CLI upload):** DONE
   evidence: `vercel deploy --prod --yes` -> `✓ Ready in 7s`, alias `https://krishna-ai-services-site.vercel.app`; live `index -> 200 text/html; charset=utf-8 bytes 12578`; `contains 'Krishna AI Services': True`; live price check `0/0/0`; all 9 assets `200`.
+- **Git-connected Vercel project:** DONE, but on a second project
+  evidence: project `krishna-ai-services-site-rn3n` (created 27 Sep 2026 10:54 IST) carries the alias `https://krishna-ai-services-site-rn3n-git-main-bbg15.vercel.app`, which Vercel only issues for a project linked to a Git repo's `main` branch. Its live URL serves the right page: `rn3n index -> 200, bytes 12578`, name present, price words `0`, `cal.com links: 4`, `wa.me/919962268122: True`.
+  Note: the clean alias `https://krishna-ai-services-site.vercel.app` still belongs to the older project `bbg15/krishna-ai-services-site`, which has no git alias and is therefore not the connected one.
 
 ## What broke and how I fixed it
 
