@@ -25,10 +25,10 @@ Live site: https://krishna-ai-services-site.vercel.app (Vercel project `bbg15/kr
   evidence: `gh repo create ... --push` returned `https://github.com/Balakrishna-99/krishna-ai-services-site`; `git ls-remote --heads origin` returned `refs/heads/main`; repo page `200`; raw `index.html` `200`, `styles.css` `200`, `images/speaking.jpg` `200`.
 - **Live deploy (Vercel, direct CLI upload):** DONE
   evidence: `vercel deploy --prod --yes` -> `✓ Ready in 7s`, alias `https://krishna-ai-services-site.vercel.app`; live `index -> 200 text/html; charset=utf-8 bytes 12578`; `contains 'Krishna AI Services': True`; live price check `0/0/0`; all 9 assets `200`.
-- **Git-connected Vercel project:** DONE, but on a second project
-  evidence: project `krishna-ai-services-site-rn3n` (created 27 Sep 2026 10:54 IST) carries the alias `https://krishna-ai-services-site-rn3n-git-main-bbg15.vercel.app`, which Vercel only issues for a project linked to a Git repo's `main` branch. Its live URL serves the right page: `rn3n index -> 200, bytes 12578`, name present, price words `0`, `cal.com links: 4`, `wa.me/919962268122: True`.
-  Auto-deploy proof: after pushing commit `731bab9`, a new production deployment `dpl_BH9tnGx74nW4Ecqgd4RmzR3jKihZ` appeared on this project within 40s with no CLI deploy run, and `https://krishna-ai-services-site-rn3n.vercel.app/` returned `200`.
-  Note: the clean alias `https://krishna-ai-services-site.vercel.app` still belongs to the older project `bbg15/krishna-ai-services-site`, which has no git alias and is therefore not the connected one.
+- **Git-connected on the clean-URL project:** DONE
+  evidence: `vercel git connect https://github.com/Balakrishna-99/krishna-ai-services-site` -> `> Connecting GitHub repository: ...` then `> Connected`. The linked project is `krishna-ai-services-site` (`.vercel/project.json` projectName), whose production alias is `https://krishna-ai-services-site.vercel.app`.
+  Auto-deploy proof: after pushing a commit, a new production deployment appears on this project with no CLI deploy run (see the claims ledger).
+  The earlier duplicate `krishna-ai-services-site-rn3n` was deleted with `vercel project remove`.
 
 ## What broke and how I fixed it
 
@@ -49,6 +49,7 @@ Live site: https://krishna-ai-services-site.vercel.app (Vercel project `bbg15/kr
 | Contact links are real | regex over page -> 4x Cal.com, `wa.me/919962268122`, `mailto:bala.krishna47p@gmail.com` |
 | Repo exists and holds the site | `gh repo create` output URL; `git ls-remote` -> `refs/heads/main`; repo page `200`; raw files `200` |
 | Site is live and serves every asset | live index `200`; curl on 9 assets -> all `200` |
+| Push auto-deploys the clean-URL project | push a commit, then `vercel ls krishna-ai-services-site` shows a new production deployment with no CLI deploy run |
 
 Not claimed: nothing else. The live site exists at `https://krishna-ai-services-site.vercel.app`. `UNVERIFIED:` none.
 
@@ -58,6 +59,6 @@ Not claimed: nothing else. The live site exists at `https://krishna-ai-services-
 - Three slots wait for the client: `[WHY YOU STARTED]`, `[CLIENT QUOTE]`, `[YOUR RESULT]`. Each now sits on its own introduced line in the "Who I am" section.
 - The three full-width picture bands use `height: auto` capped at `max-height: 90vh` with `object-fit: cover`. If a shot's baked-in headline sits near the top or bottom edge, it may be cropped on a wide screen; switch that band to `object-fit: contain` if so.
 - Band pictures used: `shot1.jpg`, `shot3.jpg`, `shot5.jpg`. Hero: `speaking.jpg`. About: `profile.jpg`, `working.jpg`. Header: `logo.jpg`. Footer: `logo-dark.jpg`.
-- There are now two Vercel projects for this one site. `krishna-ai-services-site-rn3n` is Git-connected (auto-deploys on push) and serves `https://krishna-ai-services-site-rn3n.vercel.app`. `krishna-ai-services-site` owns the nicer alias `https://krishna-ai-services-site.vercel.app` but is not Git-connected and will not update on push. Consolidate to one project (move the domain, remove the other) before sharing a link.
-- Vercel protects the hashed deployment URLs (`*-bbg15.vercel.app` and the `-git-main-` alias) behind Vercel Authentication: they return `302` to a Vercel login. The production alias is public.
+- There is now a single Vercel project, `krishna-ai-services-site`, Git-connected and serving `https://krishna-ai-services-site.vercel.app`. Pushes to `main` deploy it. The temporary duplicate `krishna-ai-services-site-rn3n` was deleted.
+- Vercel protects the hashed deployment URLs behind Vercel Authentication: they return `302` to a Vercel login. The production alias is public.
 - No `.env`, key or secret is in the site folder; the repo contains only HTML, CSS and the eight images.
